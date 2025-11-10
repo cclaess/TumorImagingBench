@@ -178,7 +178,11 @@ def apply_aggregation_filter(v, model_name):
     elif model_name == "CTClipVitExtractor":
         return v.mean(axis=(1,2,3))
     elif model_name == "PASTAExtractor":
-        return v.mean(axis=(2,3,4))        
+        return v.mean(axis=(2,3,4))   
+    elif model_name == "SpectreLocalViTExtractor":
+        # cls = v[:, :, 0].mean(axis=1)
+        # pathch = v[:, :, 1:].mean(axis=(1,2))
+        return v[:, :, 0].mean(axis=1)
     else:
         return v
 

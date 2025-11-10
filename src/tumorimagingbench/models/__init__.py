@@ -116,6 +116,12 @@ def get_extractor(name):
 
 # Try to import each default extractor, handling missing dependencies gracefully
 try:
+    from .spectre_local_vit import SpectreLocalViTExtractor
+    register_extractor('SpectreLocalViTExtractor', SpectreLocalViTExtractor)
+except ImportError as e:
+    print(f"Warning: SpectreLocalViTExtractor not available due to missing dependencies: {e}")
+
+try:
     from .ct_clip_vit import CTClipVitExtractor
     register_extractor('CTClipVitExtractor', CTClipVitExtractor)
 except ImportError as e:
